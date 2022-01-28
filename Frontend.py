@@ -4,15 +4,19 @@ Spyder Editor
 
 This is a temporary script file.
 """
-
 import streamlit as st
 import pandas as pd
 from io import StringIO
+from PIL import Image
 
+
+image = Image.open('header.jpg')
+
+st.image(image, caption=None, width=None, use_column_width=None, clamp=False, channels="RGB", output_format="auto") 
 
 st.title("Lung Cancer Survival Prediction System")
 
-
+st.caption("The following is a prototype survival prediction model that accepts genomic data and outputs a survivability in the form of a number between 0 and 1. A number greater than 0.5 indicates a survivability greater than 50%, while a number below 0.5 indicates a survivability less than 50%. Please upload your data in a .txt file format.", unsafe_allow_html=False) 
 
 uploaded_file=st.file_uploader("Upload DNA Sequence Here", type=['txt'], accept_multiple_files=False, key=None, help=None, on_change=None, args=None, kwargs=None, disabled=False)
 
@@ -38,4 +42,15 @@ if uploaded_file is not None:
     
     if uploadbutton:
        st.write('Uploading(add progress bar here)') 
+       
+if st.button('Predict!'):
+     st.write('') ##begin prediction and output results here
+
+st.header('FAQ', anchor=None)
+
+st.caption('WIP')
+
+st.header('Acknowledgements', anchor=None)
+
+st.caption('WIP')  
 
