@@ -45,8 +45,8 @@ if uploaded_file is not None:
        
 if st.button('Predict!'):
     df_json = dataframe.to_json(orient='records', date_format='iso') 
-    requests.post('http://localhost:8000/api/v0/add-new', data=df_json)
-    st.write('') ##begin prediction and output results here
+    prediction = requests.post('http://localhost:8000/api/v0/add-new', data=df_json)
+    st.write(prediction) ##begin prediction and output results here
         
 
 
