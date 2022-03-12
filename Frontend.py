@@ -6,6 +6,7 @@ This is a temporary script file.
 """
 from fastapi import FastAPI
 import requests
+import json
 import streamlit as st
 import pandas as pd
 from io import StringIO
@@ -44,7 +45,7 @@ if uploaded_file is not None:
        
 if st.button('Predict!'):
     df_json = dataframe.to_json(orient='records', date_format='iso') 
-    prediction = requests.post('http://backend:8080/prediction/', params=df_json)
+    prediction = requests.post('http://backend:8080/prediction/', data=df_json)
     st.write(prediction) ##begin prediction and output results here
         
 
