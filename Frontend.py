@@ -26,6 +26,12 @@ uploaded_file=st.file_uploader("Upload DNA Sequence Here", type=['txt'], accept_
 
 if uploaded_file is not None:
     
+    # To convert to a string based IO:
+    stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
+
+    # To read file as string:
+    string_data = stringio.read()
+    
     # Can be used wherever a "file-like" object is accepted:
     dataframe = pd.read_csv(uploaded_file, delimiter=",")
     st.write(dataframe)
@@ -36,7 +42,7 @@ if uploaded_file is not None:
        st.write('Uploading(add progress bar here)') 
        
 if st.button('Predict!'):
-    df_json = json.load(uploaded_file)
+    df_json = json.loads(dataframe)
     prediction = requests.post('http://backend:8080/prediction/', json=df_json, headers={"Content-Type":"application/json"})
     st.write(prediction) ##begin prediction and output results here
     st.write(prediction.text)
