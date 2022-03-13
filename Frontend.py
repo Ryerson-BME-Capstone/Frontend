@@ -33,6 +33,7 @@ if uploaded_file is not None:
 
     # To read file as string:
     string_data = stringio.read()
+    st.write(string_data)
     
     # Can be used wherever a "file-like" object is accepted:
     dataframe = pd.read_csv(uploaded_file, delimiter=",")
@@ -44,7 +45,7 @@ if uploaded_file is not None:
        st.write('Uploading(add progress bar here)') 
        
 if st.button('Predict!'):
-    df_json = json.dumps(string_data)
+    df_json = json.loads(string_data)
     prediction = requests.post('http://backend:8080/prediction/', json=df_json, headers={"Content-Type":"application/json"})
     st.write(prediction) ##begin prediction and output results here
     st.write(prediction.text)
