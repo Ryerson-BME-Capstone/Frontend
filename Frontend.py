@@ -48,8 +48,6 @@ if st.button('Predict!'):
     prediction = requests.post('http://backend:8080/prediction/', json=payload, headers={"Content-Type": "application/json"})
     st.write(prediction) ##begin prediction and output results here
     st.write(prediction.text)
-    st.write(prediction.request.data)
-    st.write(prediction.request.headers)
 
 
 st.header('FAQ', anchor=None)
