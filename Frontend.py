@@ -27,12 +27,12 @@ uploaded_file=st.file_uploader("Upload DNA Sequence Here", type=['txt'], accept_
 if uploaded_file is not None:
     
     # To convert to a string based IO:
-    stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
+    #stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
 
     # To read file as string:
-    string_data = stringio.read()
+    #string_data = stringio.read()
     
-    # Can be used wherever a "file-like" object is accepted:
+    # conver txt file to pandas dataframe
     dataframe = pd.read_csv(uploaded_file)
     st.write(dataframe)
     
