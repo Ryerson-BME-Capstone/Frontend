@@ -43,7 +43,7 @@ if uploaded_file is not None:
        
 if st.button('Predict!'):
     df_json = dataframe.to_json(orient='records')
-    prediction = requests.post('http://backend:8080/prediction/', json=json.dumps(df_json), headers={"Content-Type": "application/json"})
+    prediction = requests.post('http://backend:8080/prediction/', json=df_json, headers={"Content-Type": "application/json"})
     st.write(prediction) ##begin prediction and output results here
     st.write(prediction.text)
         
