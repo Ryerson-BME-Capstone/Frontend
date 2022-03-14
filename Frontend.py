@@ -33,7 +33,7 @@ if uploaded_file is not None:
     string_data = stringio.read()
     
     # Can be used wherever a "file-like" object is accepted:
-    dataframe = pd.read_csv(uploaded_file, delimiter=",")
+    dataframe = pd.read_csv(uploaded_file)
     st.write(dataframe)
     
     uploadbutton=st.button('Upload',disabled= False)
