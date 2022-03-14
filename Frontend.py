@@ -42,8 +42,9 @@ if uploaded_file is not None:
        st.write('Uploading(add progress bar here)') 
        
 if st.button('Predict!'):
-    df_json = dataframe.to_dict('list')
-    prediction = requests.post('http://backend:8080/prediction/', json=df_json, headers={"Content-Type": "application/json"})
+    df_json = dataframe.to_json(orient='records')
+    payload = df_json.strip("[]")
+    prediction = requests.post('http://backend:8080/prediction/', data=payload, headers={"Content-Type": "application/json"})
     st.write(prediction) ##begin prediction and output results here
     st.write(prediction.text)
         
