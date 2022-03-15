@@ -37,17 +37,16 @@ if uploaded_file is not None:
     dataframe = pd.read_csv(uploaded_file)
     st.write(dataframe)
     
-    uploadbutton=st.button('Upload',disabled= False)
-    
-    if uploadbutton:
-       st.write('Uploading(add progress bar here)') 
+    uploadbutton=st.button('Upload',disabled= False) 
        
 if st.button('Predict!'):
     data = dataframe.to_dict(orient='records')
     payload = data[0]
     prediction = requests.post("http://backend:8080/prediction/", json=payload, headers={"Content-Type": "application/json"})
-    st.write(prediction) ##begin prediction and output results here
-    st.write(prediction.text)
+    if prediction == 1
+        st.write('You will survive')
+    if prediction == 0
+        st.write('You will not survive')
 
 
 st.header('FAQ', anchor=None)
