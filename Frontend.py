@@ -43,7 +43,7 @@ if st.button('Predict!'):
     data = dataframe.to_dict(orient='records')
     payload = data[0]
     prediction = requests.post("http://backend:8080/prediction/", json=payload, headers={"Content-Type": "application/json"})
-    st.write(prediction.text)
+    st.write(prediction)
 
 
 st.header('FAQ', anchor=None)
