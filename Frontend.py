@@ -43,9 +43,9 @@ if st.button('Predict!'):
     data = dataframe.to_dict(orient='records')
     payload = data[0]
     prediction = requests.post("http://backend:8080/prediction/", json=payload, headers={"Content-Type": "application/json"})
-    if prediction == 1:
+    if prediction == '[1]':
         st.write('You will survive')
-    if prediction == 0:
+    if prediction == '[0]':
         st.write('You will not survive')
 
 
